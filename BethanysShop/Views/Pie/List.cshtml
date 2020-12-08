@@ -9,7 +9,7 @@
         <h4>@pie.Category.CategoryName</h4>
     </div>*@
 
-    <div class="col-sm-4 col-lg-4 col-md-4">
+    @*<div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
             <img src="@pie.ImageThumbnailUrl" alt="">
             <div class="caption">
@@ -20,6 +20,8 @@
                 <p>@pie.ShortDescription</p>
             </div>
         </div>
-    </div>
+    </div>*@
+
+    <partial name="_PieCard" model="pie" />
 }
 
