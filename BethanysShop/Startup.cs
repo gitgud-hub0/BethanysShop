@@ -37,6 +37,14 @@ namespace BethanysShop
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            //scoped this all interaction in the same request is with the same shoppingcart
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            //used by shopping cart
+            services.AddHttpContextAccessor();
+            //also need middleware to support session
+            services.AddSession();
+
             services.AddControllersWithViews();
         }
 
@@ -54,6 +62,8 @@ namespace BethanysShop
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //make sure to call UseSession before UseRouting, important in the middleware pipeline
+            app.UseSession();
 
             app.UseRouting();
 
