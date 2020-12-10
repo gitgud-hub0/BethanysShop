@@ -3,6 +3,9 @@
 
 <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
     <h4>You're just one step away form your delicious pies.</h4>
+    
+    @*listen for all validation errors from the form and display them*@
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     @*asp-for="LastName" will look at the Order class and render its property value, input
         will also be bound to last name*@

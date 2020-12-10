@@ -36,7 +36,7 @@ namespace BethanysShop.Controllers
                 ModelState.AddModelError("", "Your cart is empty, add some pies first");
             }
 
-            //valid when no model binding errors
+            //valid when no model binding errors and other validation errors set in the model
             if (ModelState.IsValid)
             {
                 _orderRepository.CreateOrder(order);
