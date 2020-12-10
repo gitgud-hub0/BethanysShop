@@ -37,6 +37,7 @@ namespace BethanysShop
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             //scoped this all interaction in the same request is with the same shoppingcart
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
