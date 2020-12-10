@@ -78,6 +78,7 @@ namespace BethanysShop
 
             //added for identities functionality
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
