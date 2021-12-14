@@ -35,7 +35,7 @@ namespace BethanysShop
             //service.AddScoped, singleton per request, discarded after each request, good to work incombination with data access
 
             services.AddDbContext<AppDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("AwsRdsConnection")));
 
             //added for identities functionality
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
@@ -58,8 +58,10 @@ namespace BethanysShop
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext appDbContext)
         {
+            appDbContext.Database.Migrate();
+
             //add middleware components here
             //handle http request and produce an http response
             //they are in a pipeline, the order they are added matters
