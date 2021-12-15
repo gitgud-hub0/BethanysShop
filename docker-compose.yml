@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+
+  reverseproxy:
+    build:
+      context: .
+      dockerfile: nginx/nginx.Dockerfile
+    depends_on:
+      - bethanysshop
+    ports:
+      - "5200:5100"
+
   bethanysshop:
     image: ${DOCKER_REGISTRY-}bethanysshop
     build:
