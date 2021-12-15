@@ -6,5 +6,18 @@ services:
     build:
       context: .
       dockerfile: BethanysShop/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5000
     ports:
-      - "80:80"
+      - "5000:5000"
+
+  piedb:
+    build:
+      context: .
+      dockerfile: sql/sql.Dockerfile
+    restart: always
+    ports:
+      - "1440:1443"
+    environment:
+      - SA_PASSWORD=Sqlc0ntainersFTW!
+      - ACCEPT_EULA="Y"
