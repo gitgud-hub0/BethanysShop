@@ -9,7 +9,7 @@ services:
     depends_on:
       - bethanysshop
     ports:
-      - "5200:5100"
+      - "80:80"
 
   bethanysshop:
     image: ${DOCKER_REGISTRY-}bethanysshop
@@ -21,13 +21,13 @@ services:
     ports:
       - "5000:5000"
 
-  piedb:
-    build:
-      context: .
-      dockerfile: sql/sql.Dockerfile
-    restart: always
-    ports:
-      - "1440:1443"
-    environment:
-      - SA_PASSWORD=Sqlc0ntainersFTW!
-      - ACCEPT_EULA="Y"
+#  piedb:
+#    build:
+#      context: .
+#      dockerfile: sql/sql.Dockerfile
+#    restart: always
+#    ports:
+#      - "1440:1443"
+#    environment:
+#      - SA_PASSWORD=Sqlc0ntainersFTW!
+#      - ACCEPT_EULA="Y"
