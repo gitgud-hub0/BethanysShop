@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BethanysShop.Models;
+﻿using BethanysShop.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BethanysShop.Models
 {
@@ -29,7 +28,7 @@ namespace BethanysShop.Models
 
             var context = services.GetService<AppDbContext>();
 
-            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            string cartId = session.GetString("CartId") ?? session.Id.ToMD5Hash().ToString();
 
             session.SetString("CartId", cartId);
 
