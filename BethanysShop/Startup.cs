@@ -35,7 +35,7 @@ namespace BethanysShop
             //service.AddScoped, singleton per request, discarded after each request, good to work incombination with data access
 
             services.AddDbContext<AppDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("AzureSqlConnection")));
 
             //added for identities functionality
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
